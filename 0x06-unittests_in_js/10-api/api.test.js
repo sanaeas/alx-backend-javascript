@@ -52,12 +52,14 @@ describe('Index page', function () {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userName: 'Betty' }),
+      json: {
+        userName: 'Betty',
+      },
     };
 
     request(options, function (error, response, body) {
       expect(response.statusCode).to.equal(200);
-      expect(body).to.equal(`Welcome ${username}`);
+      expect(body).to.equal('Welcome Betty');
       done();
     });
   });
